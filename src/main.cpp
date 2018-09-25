@@ -1,11 +1,12 @@
-#include <string>               //std::string
-#include <vector>               //std::vector<>
-#include <iostream>             //std::cin, std::cout, std::endl
-#include "utils/getFileList.h"  //getFileList();
-#include "utils/Matrix.h"
-#include "utils/loadMatrix.h"
-#include "algorithms/kruskal.h"
-#include "algorithms/prim.h"
+#include <string>                   //std::string
+#include <vector>                   //std::vector<>
+#include <iostream>                 //std::cin, std::cout, std::endl
+#include "utils/getFileList.h"      //getFileList();
+#include "utils/Matrix.h"           //Matrix<>
+#include "utils/loadMatrix.h"       //loadMatrix()
+#include "algorithms/kruskal.h"     //kruskal()
+#include "algorithms/prim.h"        //prim()
+#include "algorithms/dijkstra.h"    //dijkstra()
 
 #ifdef __linux__
 #define CLEAR_COMMAND "clear"
@@ -41,6 +42,7 @@ int main() {
         std::cout << "\nAvailable methods:" << std::endl;
         std::cout << "   (0) Kruskal" << std::endl;
         std::cout << "   (1) Prim" << std::endl;
+        std::cout << "   (2) Dijkstra" << std::endl;
         std::cout << "\nSelect a method: ";
         std::cin >> method;
 
@@ -51,6 +53,9 @@ int main() {
                 break;
             case 1:
                 std::cout << "Weight: " << prim(m) << std::endl;
+                break;
+            case 2:
+                std::cout << "Weight: " << dijkstra(m) << std::endl;
                 break;
             default:
                 std::cout << "\nInvalid option ";
