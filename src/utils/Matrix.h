@@ -6,21 +6,18 @@
 #include <iostream> //std::cout, std::endl
 
 template <typename T>
-class Matrix {
-
-private:
+struct Matrix {
 
     T* data;                //Dados da matrix
     std::size_t lines;      //Número de linhas
     std::size_t columns;    //Número de colunas
-
-public:
 
     /// \brief Constrói uma matrix m x n;
     /// \param m Número de linhas.
     /// \param n Número de colunas.
     Matrix(std::size_t m, std::size_t n) : data(nullptr), lines(m), columns(n) {
         data = static_cast<T*>(std::malloc(m * n * sizeof(T)));
+        for(std::size_t i = 0; i < (m * n); i++) data[i] = static_cast<T>(0);
     }
 
     /// \brief Copy constructor.

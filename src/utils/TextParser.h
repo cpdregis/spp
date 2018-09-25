@@ -55,6 +55,7 @@ public:
     std::size_t splitLine(char delimiter, std::vector<T>& vec) {
         std::string line;
         std::getline(file, line);
+        format(line);
         std::stringstream sstr{line};
         while(true) {
             std::string value;
@@ -68,6 +69,26 @@ public:
             }
         }
         return vec.size();
+    }
+
+    void replaceAll(std::string& s, const std::string& search, const std::string& replace) {
+        for( std::size_t pos = 0; ; pos += replace.length() ) {
+            // Locate the substring to replace
+            pos = s.find( search, pos );
+            if( pos == std::string::npos ) break;
+            // Replace by erasing and inserting
+            s.erase( pos, search.length() );
+            s.insert( pos, replace );
+        }
+    }
+
+    void format(std::string& line) {
+        while(line.find("\t") != std::string::npos) {
+            replaceAll(line, "\t", " ");
+        }
+        while(line.find("  ") != std::string::npos) {
+            replaceAll(line, "  ", " ");
+        }
     }
 
 private:

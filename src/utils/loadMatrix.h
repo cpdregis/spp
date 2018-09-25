@@ -12,7 +12,6 @@ Matrix<T> loadMatrix(const std::string& filename) {
 
     std::size_t n;
     tp.readLine(n);
-    n--;
 
     Matrix<T> mat(n, n);
 
@@ -22,9 +21,8 @@ Matrix<T> loadMatrix(const std::string& filename) {
         tp.splitLine(' ', vec);
 
         for(std::size_t j = 0; j < vec.size(); j++) {
-            mat[i][i+j] = mat[i+j][i] = vec[j];
+            mat[i][i + 1 + j] = mat[i + 1 + j][i] = vec[j];
         }
-
     }
 
     return mat;
