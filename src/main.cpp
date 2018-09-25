@@ -5,6 +5,7 @@
 #include "utils/Matrix.h"
 #include "utils/loadMatrix.h"
 #include "algorithms/kruskal.h"
+#include "algorithms/prim.h"
 
 #ifdef __linux__
 #define CLEAR_COMMAND "clear"
@@ -39,6 +40,7 @@ int main() {
         std::size_t method;
         std::cout << "\nAvailable methods:" << std::endl;
         std::cout << "   (0) Kruskal" << std::endl;
+        std::cout << "   (1) Prim" << std::endl;
         std::cout << "\nSelect a method: ";
         std::cin >> method;
 
@@ -46,6 +48,9 @@ int main() {
         switch(method) {
             case 0:
                 std::cout << "Weight: " << kruskal(m) << std::endl;
+                break;
+            case 1:
+                std::cout << "Weight: " << prim(m) << std::endl;
                 break;
             default:
                 std::cout << "\nInvalid option ";
